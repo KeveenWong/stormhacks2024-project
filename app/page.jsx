@@ -12,8 +12,9 @@ export default function Home() {
         <title>Speech Simulation</title>
       </Head>
       <main>
-        <h1>Speech Simulation Card</h1>
+        <h1>Speech Card</h1>
         <SpeechCard text={sampleText} />
+        <button onClick={() => console.log("Button clicked!")}>Click me</button>
       </main>
     </div>
   );

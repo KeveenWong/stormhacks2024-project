@@ -10,7 +10,9 @@ const SpeechCard = () => {
 
   useEffect(() => {
     const fetchText = async () => {
-      const result = await main();
+      // uncomment for gpt 
+      // const result = await main();
+      const result = "Hello, this is a simulated speech being displayed in the card.";
       setText(result);
     };
 
