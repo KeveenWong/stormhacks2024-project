@@ -1,5 +1,8 @@
-const OpenAI = require("openai");
-require('dotenv').config();
+import OpenAI from "openai";
+import dotenv from "dotenv";
+
+// Load environment variables from .env file
+dotenv.config();
 
 async function main() {
   const openai = new OpenAI({ apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY, dangerouslyAllowBrowser: true });
