@@ -1,0 +1,32 @@
+/* components/SpeechCard.module.css */
+
+.card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card::after {
+    content: "";
+    animation: cursor-blink 0.8s steps(1) infinite;
+    border-right: 2px solid black;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  
+  @keyframes cursor-blink {
+    from {
+      border-color: transparent;
+    }
+    to {
+      border-color: black;
+    }
+  }
