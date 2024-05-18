@@ -2,7 +2,7 @@
 // pages/index.js
 
 import Head from 'next/head';
-import SpeechCard from './components/SpeechCard';
+import SpeechCard from '../components/SpeechCard';
 
 export default function Home() {
   const sampleText = "Hello, this is a simulated speech being displayed in the card.";

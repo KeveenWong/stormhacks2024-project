@@ -1,15 +1,12 @@
-// components/SpeechCard.js
-
 import { useState, useEffect } from 'react';
-import styles from '../../styles/SpeechCard.module.css';
-import main from '../openai-test';
+import styles from '@styles/SpeechCard.module.css';
+import main from '../utils/openai-test';
 require('dotenv').config();
 
 const SpeechCard = () => {
   const [displayedText, setDisplayedText] = useState('');
   const [index, setIndex] = useState(0);
   const [text, setText] = useState('');
-
 
   useEffect(() => {
     const fetchText = async () => {
@@ -20,7 +17,9 @@ const SpeechCard = () => {
     fetchText();
   }, []);
 
-  console.log("text: " + text);
+  useEffect(() => {
+    console.log("text: " + text); 
+  }, [text]);
 
   useEffect(() => {
     if (index < text.length) {
