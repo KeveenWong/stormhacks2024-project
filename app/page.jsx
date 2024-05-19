@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import Button from '../components/Button'; // Adjust the import path as needed
-import Link from 'next/link'
+import Button from '@components/Button'; // Adjust the import path as needed
 
 const Page = () => {
   return (
