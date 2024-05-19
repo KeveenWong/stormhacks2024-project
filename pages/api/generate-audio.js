@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { createWriteStream } from 'fs';
 import path from 'path';
+import dotenv from 'dotenv';
 
+dotenv.config();
 // Define constants for the script
-const XI_API_KEY = "a42b9d76aefb8c7c6cf9ebf01231340a"; // Your API key for authentication
+const XI_API_KEY = process.env.XI_API_KEY; // Your API key for authentication
 const VOICE_ID = "nbh8sJLTwilP7NHXTpBz"; // ID of the voice model to use
 
 const outputPath = path.join(process.cwd(), 'public', 'assets', 'instructions_audio'); // Update this to your desired folder path
