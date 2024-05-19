@@ -24,14 +24,14 @@ const Page3 = () => {
   ];
 
   const positions = [
-    { name: 'Bird of Paradise', duration: 5 },
-    { name: 'Front Splits', duration: 10 },
-    { name: 'Peacock', duration: 7 },
-    { name: 'Bird of Paradise', duration: 5 },
-    { name: 'Front Splits', duration: 10 },
-    { name: 'Peacock', duration: 7 },
-    { name: 'Bird of Paradise', duration: 5 },
-    { name: 'Front Splits', duration: 10 },
+    { name: 'Bird of Paradise', duration:5 },
+    { name: 'Front Splits', duration:10 },
+    { name: 'Peacock', duration:7 },
+    { name: 'Bird of Paradise', duration:5 },
+    { name: 'Front Splits', duration:10 },
+    { name: 'Peacock', duration:7 },
+    { name: 'Bird of Paradise', duration:5 },
+    { name: 'Front Splits', duration:10 },
     { name: 'Peacock', duration: 7 }
   ];
 

@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import Button from '@components/Button'; // Adjust the import path as needed
+import Button from '../components/Button'; // Adjust the import path as needed
+import Link from 'next/link'
 
 const Page = () => {
   return (
@@ -56,10 +57,9 @@ const Page = () => {
       <div className="absolute bottom-[8vh] left-[26vw]">
       <Button
         href="/page2"
-        className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95 hover:bg-pink-300"
-      >
-  I'm Ready!
-</Button>
+        className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95 hover:bg-pink-300">
+        I'm Ready!
+      </Button>
 
       </div>
     </div>

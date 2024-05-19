@@ -43,8 +43,8 @@ const Page = () => {
         <Image
           src="/assets/images/Page6Cat.png"
           alt="Page 6 Cat"
-          width={900}
-          height={900}
+          width={700}
+          height={700}
         />
       </div>
       {/* Button */}
