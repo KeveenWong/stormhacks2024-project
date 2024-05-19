@@ -5,6 +5,7 @@ import SpeechCard from '../components/SpeechCard';
 import { generateYogaWorkout } from '@utils/yoga-app';
 import { processExerciseSpeech } from '@utils/elevenlabs';
 import axios from 'axios';
+import { playAudio } from '@utils/general';
 
 export default function Home() {
   const timer_value = 10;
@@ -46,14 +47,14 @@ export default function Home() {
     // }
 
     // First exercise audio only
-    const exerciseName = parsedText.exercises[0].exercise;
-    const exerciseIntro = parsedText.exercises[0].intro;
-    const exerciseInstructions = parsedText.exercises[0].instructions;
-    await axios.post('/api/generate-audio', {
-      exerciseName,
-      exerciseIntro,
-      exerciseInstructions
-    });
+    // const exerciseName = parsedText.exercises[0].exercise;
+    // const exerciseIntro = parsedText.exercises[0].intro;
+    // const exerciseInstructions = parsedText.exercises[0].instructions;
+    // await axios.post('/api/generate-audio', {
+    //   exerciseName,
+    //   exerciseIntro,
+    //   exerciseInstructions
+    // });
   
     setSessionStarted(true);
     setIsTimerRunning(false); // Don't start the timer immediately after session starts
@@ -67,6 +68,13 @@ export default function Home() {
   useEffect(() => {
     console.log('generatedTextEffect:', generatedText);
   }, [generatedText]);
+
+  useEffect(() => {
+    if (generatedText && generatedText.exercises && generatedText.exercises[currentExercise]) {
+        playAudio(`/assets/instructions_audio/${generatedText.exercises[currentExercise].exercise}`);
+    }
+}, [currentExercise, generatedText]);
+
 
   useEffect(() => {
     // Start the timer when the session starts and isTimerRunning is true
