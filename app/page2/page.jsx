@@ -6,17 +6,7 @@ import { Input } from '@nextui-org/react';
 import Button from '@components/Button'; // Adjust the import path as needed
 import { generateYogaWorkout } from '@utils/yoga-app'; // Adjust the import path as needed
 
-const Page2 = () => {
-  const [formData, setFormData] = useState({
-    intensity: '',
-    timeOfDay: '',
-    yogaStyle: '',
-    injuries: '',
-    goals: '',
-    keywords: '',
-    numberOfExercises: '1' // Initialize with a default value of 1
-  });
-
+const Page2 = ({ formData, setFormData, onSubmit }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -35,12 +25,8 @@ const Page2 = () => {
     }
   };
 
-  const handleSubmit = async () => {
-    // Save form data to localStorage
-    localStorage.setItem('formData', JSON.stringify(formData));
-    const text = await generateYogaWorkout(formData);
-    console.log('Generated Text:', text);
-    console.log('Form Data saved to localStorage:', formData);
+  const handleSubmit = () => {
+    onSubmit(formData);
   };
 
   return (
@@ -174,8 +160,8 @@ const Page2 = () => {
       </div>
       {/* Button */}
       <div className="absolute bottom-[8vh] left-[20vw]">
-        <Button href="/page3" onClick={handleSubmit}>
-          Generate My Workout
+        <Button onClick={handleSubmit}>
+          Generate My Workout 
         </Button>
       </div>
     </div>

@@ -202,7 +202,8 @@ async function generateYogaWorkout(params) {
   any values that determine the duration or repetitions of the exercise in the instructions, as Luna will guide the user through the timing.
 
   Order the exercises in a sensible manner and format this as JSON with fields being:
-  "exercise": name of the exercise, 
+  "exercise": parsable title of the exercise (e.g. "warrior1"), 
+  "name": user friendly name of the exercise (e.g. "Warrior Pose"),
   "intro": a brief introduction to the exercise, e.g. "Second up, we have the Warrior Pose!" (adapt based on what number exercise it is in the JSON, and add the speaking quirks of Luna),
   "instructions" (how to perform the exercise).
 

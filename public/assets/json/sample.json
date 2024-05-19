@@ -2,41 +2,49 @@
     "exercises": [
         {
             "exercise": "child",
+            "name": "Child's Pose",
             "intro": "Let's start this session with the Child's Pose! Time to bring out your inner child and relax like there's no tomorrow!",
             "instructions": "Begin on your hands and knees, then sit back on your heels and reach your arms forward. Rest your forehead on the mat and take deep breaths."
         },
         {
             "exercise": "cat",
+            "name": "Cat Pose",
             "intro": "Moving on to the Cat Pose! Get ready to stretch and arch your back like a graceful feline!",
             "instructions": "Start on your hands and knees, exhale as you round your spine towards the ceiling. Inhale as you arch your back and look up."
         },
         {
             "exercise": "cow",
+            "name": "Cow Pose",
             "intro": "Now, let's flow into the Cow Pose! Time to moo-ve that spine and open up your heart!",
             "instructions": "From the Cat Pose, inhale as you drop your belly towards the mat, lift your chin and chest, and gaze forward."
         },
         {
             "exercise": "downward_facing_dog",
+            "name": "Downward Facing Dog",
             "intro": "Up next is the Downward Facing Dog! Let's stretch it out and feel the power in this classic yoga pose!",
             "instructions": "Start on your hands and knees, lift your hips up and back, straightening your arms and legs. Press your heels towards the ground."
         },
         {
             "exercise": "extended_puppy",
+            "name": "Extended Puppy Pose",
             "intro": "Time for the Extended Puppy Pose! Get ready to melt your heart towards the earth and feel the deep stretch in your spine!",
             "instructions": "From Downward Facing Dog, lower your forearms to the mat while keeping your hips high. Walk your hands forward and relax your chest towards the ground."
         },
         {
             "exercise": "cobra",
+            "name": "Cobra Pose",
             "intro": "Moving on to the Cobra Pose! Time to awaken your spine and embrace the strength within!",
             "instructions": "Lie on your stomach, place your palms under your shoulders and lift your chest up while keeping your elbows close to your body. Gaze forward."
         },
         {
             "exercise": "bridge",
+            "name": "Bridge Pose",
             "intro": "Let's now flow into the Bridge Pose! Get ready to lift your hips and open up your heart to new possibilities!",
             "instructions": "Lie on your back, bend your knees and place your feet flat on the mat. Press into your feet to lift your hips up, while keeping your shoulders grounded."
         },
         {
             "exercise": "corpse",
+            "name": "Corpse Pose",
             "intro": "Last but not least, the Corpse Pose! Time to relax, unwind, and let go of any remaining tension.",
             "instructions": "Lie on your back, close your eyes, and let your body sink into the mat. Take slow, deep breaths and allow yourself to fully relax."
         }
