@@ -92,29 +92,37 @@ const WorkoutManager = () => {
     setGeneratedText(parsedText);
     handleNextStep();
 
-    // First exercise audio only
-    console.log('parsedText', parsedText);
-    const exerciseName = parsedText.exercises[0].exercise;
-    const exerciseIntro = parsedText.exercises[0].intro;
-    const exerciseInstructions = parsedText.exercises[0].instructions;
-    console.log('exerciseName', exerciseName);
-    console.log('exerciseIntro', exerciseIntro);
-    console.log('exerciseInstructions', exerciseInstructions);
-    await axios.post('/api/generate-audio', {
-      exerciseName,
-      exerciseIntro,
-      exerciseInstructions
-    });
+    // Iterate through each exercise and call the function
+    for (const exercise of parsedText.exercises) {
+        const exerciseName = exercise.exercise;
+        const exerciseIntro = exercise.intro;
+        const exerciseInstructions = exercise.instructions;
+        await axios.post('/api/generate-audio', {
+            exerciseName,
+            exerciseIntro,
+            exerciseInstructions
+        });
+        }
+    // // First exercise audio only
+    // const exerciseName = parsedText.exercises[0].exercise;
+    // const exerciseIntro = parsedText.exercises[0].intro;
+    // const exerciseInstructions = parsedText.exercises[0].instructions;
 
-    // Second exercise audio only
-    const exerciseName2 = parsedText.exercises[1].exercise;
-    const exerciseIntro2 = parsedText.exercises[1].intro;
-    const exerciseInstructions2 = parsedText.exercises[1].instructions;
-    await axios.post('/api/generate-audio', {
-      exerciseName: exerciseName2,
-      exerciseIntro: exerciseIntro2,
-      exerciseInstructions: exerciseInstructions2
-    });
+    // await axios.post('/api/generate-audio', {
+    //   exerciseName,
+    //   exerciseIntro,
+    //   exerciseInstructions
+    // });
+
+    // // Second exercise audio only
+    // const exerciseName2 = parsedText.exercises[1].exercise;
+    // const exerciseIntro2 = parsedText.exercises[1].intro;
+    // const exerciseInstructions2 = parsedText.exercises[1].instructions;
+    // await axios.post('/api/generate-audio', {
+    //   exerciseName: exerciseName2,
+    //   exerciseIntro: exerciseIntro2,
+    //   exerciseInstructions: exerciseInstructions2
+    // });
   };
 
   const handleReset = () => {
