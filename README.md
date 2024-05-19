@@ -1,7 +1,7 @@
 ## StormHacks 2024 - YogaMate
 
 ![app-main](public/assets/images/app-main.png)
-![app-info](public/assets/images/app-info.png)
+![app-intro](public/assets/images/app-intro.png)
 ![app-workflow](public/assets/images/app-workflow.png)
 
 ## What is YogaMate?
