@@ -1,115 +1,47 @@
-// "use strict";
+const axios = require('axios'); // Import the axios library for making HTTP requests
+const fs = require('fs'); // Import the fs module for file operations
 
-// import axios from 'axios'; // Used for making HTTP requests
-// import { createWriteStream } from 'fs'; // Used for working with the file system
+// Define constants for the script
+const CHUNK_SIZE = 1024; // Size of chunks to read/write at a time
+const XI_API_KEY = "a42b9d76aefb8c7c6cf9ebf01231340a"; // Your API key for authentication
+const VOICE_ID = "<voice-id>"; // ID of the voice model to use
+const TEXT_TO_SPEAK = "this is a test"; // Text you want to convert to speech
+const OUTPUT_PATH = "output.mp3"; // Path to save the output audio file
 
-// // Define constants for the script
-// const CHUNK_SIZE = 1024; // Size of chunks to read/write at a time
-// const XI_API_KEY = "2800a75c7d4f8b2cd8a875ded2cd4a68"; // Your API key for authentication
-// const VOICE_ID = "rsWTIhwUSKIGTJQpxG2P"; // ID of the voice model to use
+// Construct the URL for the Text-to-Speech API request
+const ttsUrl = `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}/stream`;
 
-// const outputPath = '@public/assets/instructions_audio/'; // Update this to your desired folder path
+// Set up headers for the API request, including the API key for authentication
+const headers = {
+  "Accept": "application/json",
+  "xi-api-key": XI_API_KEY
+};
 
-// async function createIntroAudio(exerciseIntro, exerciseName, outputPath) {
-//     const introFileName = `${exerciseName}_intro.mp3`;
-//     const introFilePath = `${outputPath}${introFileName}`;
-//     const ttsUrl = `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}/stream`;
+// Set up the data payload for the API request, including the text and voice settings
+const data = {
+  "text": TEXT_TO_SPEAK,
+  "model_id": "eleven_multilingual_v2",
+  "voice_settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+  }
+};
 
-//     const headers = {
-//         "Accept": "application/json",
-//         "xi-api-key": XI_API_KEY
-//     };
+// Make the POST request to the TTS API with headers and data, enabling streaming response
+axios.post(ttsUrl, data, { headers: headers, responseType: 'stream' })
+  .then((response) => {
+    // Create a writable stream to save the output file
+    const writer = fs.createWriteStream(OUTPUT_PATH);
 
-//     const data = {
-//         "text": exerciseIntro,
-//         "model_id": "eleven_multilingual_v2",
-//         "voice_settings": {
-//             "stability": 0.5,
-//             "similarity_boost": 0.8,
-//             "style": 0.0,
-//             "use_speaker_boost": true
-//         }
-//     };
+    // Pipe the response stream to the output file
+    response.data.pipe(writer);
 
-//     try {
-//         const response = await axios({
-//             method: 'post',
-//             url: ttsUrl,
-//             headers: headers,
-//             data: data,
-//             responseType: 'stream'
-//         });
-
-//         const writer = createWriteStream(introFilePath);
-//         response.data.pipe(writer);
-
-//         return new Promise((resolve, reject) => {
-//             writer.on('finish', resolve);
-//             writer.on('error', reject);
-//         });
-//     } catch (error) {
-//         console.error(error.response ? error.response.data : error.message);
-//         throw error;
-//     }
-// }
-
-// async function createInstructionsAudio(exerciseInstructions, exerciseName, outputPath) {
-//     const instructionsFileName = `${exerciseName}_instructions.mp3`;
-//     const instructionsFilePath = `${outputPath}${instructionsFileName}`;
-//     const ttsUrl = `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}/stream`;
-
-//     const headers = {
-//         "Accept": "application/json",
-//         "xi-api-key": XI_API_KEY
-//     };
-
-//     const data = {
-//         "text": exerciseInstructions,
-//         "model_id": "eleven_multilingual_v2",
-//         "voice_settings": {
-//             "stability": 0.5,
-//             "similarity_boost": 0.8,
-//             "style": 0.0,
-//             "use_speaker_boost": true
-//         }
-//     };
-
-//     try {
-//         const response = await axios({
-//             method: 'post',
-//             url: ttsUrl,
-//             headers: headers,
-//             data: data,
-//             responseType: 'stream'
-//         });
-
-//         const writer = createWriteStream(instructionsFilePath);
-//         response.data.pipe(writer);
-
-//         return new Promise((resolve, reject) => {
-//             writer.on('finish', resolve);
-//             writer.on('error', reject);
-//         });
-//     } catch (error) {
-//         console.error(error.response ? error.response.data : error.message);
-//         throw error;
-//     }
-// }
-
-// async function processExerciseSpeech(exerciseName, exerciseNumber, exerciseIntro, exerciseInstructions) {
-//     try {
-//         await createIntroAudio(exerciseIntro, exerciseName, outputPath);
-//         await createInstructionsAudio(exerciseInstructions, exerciseName, outputPath);
-//     } catch (error) {
-//         console.error("Error processing exercise speech:", error);
-//         throw error;
-//     }
-// }
-
-// export { processExerciseSpeech };
-
-// // Example usage (in another ESModule file):
-// // import { processExerciseSpeech } from './path-to-this-file';
-// // processExerciseSpeech("Push Ups", 1, "Introduction to Push Ups", "Do 20 push ups")
-// //     .then(() => console.log("Audio files saved successfully."))
-// //     .catch(error => console.error("Error:", error));
+    // Inform the user of success
+    console.log("Audio stream saved successfully.");
+  })
+  .catch((error) => {
+    // Print the error message if the request was not successful
+    console.error(error.message);
+  });

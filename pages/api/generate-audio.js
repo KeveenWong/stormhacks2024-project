@@ -3,8 +3,8 @@ import { createWriteStream } from 'fs';
 import path from 'path';
 
 // Define constants for the script
-const XI_API_KEY = "2800a75c7d4f8b2cd8a875ded2cd4a68"; // Your API key for authentication
-const VOICE_ID = "q5hHjaQOkXjnpr4map3b"; // ID of the voice model to use
+const XI_API_KEY = "a42b9d76aefb8c7c6cf9ebf01231340a"; // Your API key for authentication
+const VOICE_ID = "nbh8sJLTwilP7NHXTpBz"; // ID of the voice model to use
 
 const outputPath = path.join(process.cwd(), 'public', 'assets', 'instructions_audio'); // Update this to your desired folder path
 

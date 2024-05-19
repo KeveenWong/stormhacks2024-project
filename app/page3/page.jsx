@@ -8,7 +8,7 @@ import imgageone from "../../public/assets/images/bird_of_paradise.png"
 import imagetwo from "../../public/assets/images/front_splits.png"
 import imagethree from '../../public/assets/images/peacock.png'
 
-const Page3 = ({ generatedText, onNext }) => {
+const Page3 = ({ generatedText, onNext, onPrev }) => {
   const photos = [
     { id: 1, url: imgageone, caption: 'Bird of Paradise' },
     { id: 2, url: imagetwo, caption: 'Front Splits' },
@@ -69,18 +69,25 @@ const Page3 = ({ generatedText, onNext }) => {
               <div className="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 w-[120%] h-1 bg-pink-300"></div>
             </div>
             
-            <div className="w-full h-[70%] overflow-auto p-4">
-              <div className="grid grid-cols-3 gap-4">
-              {photos.map(photo => (
-                <div key={photo.id} className="photo">
-                <Image src={photo.url} height={300} width={300}/>
-                
-                <p>{photo.caption}{photo.duration} minutes</p>
+            {generatedText ? (
+              <div className="w-full h-[70%] overflow-auto p-4">
+                <div className="grid grid-cols-3 gap-4">
+                  {generatedText.exercises.map((exercise, index) => (
+                    <div key={index}>
+                      <Image 
+                        src={`/assets/images/yoga_images/${exercise.exercise}.png`} 
+                        height={300} 
+                        width={300} 
+                        alt={`Image for ${exercise.exercise}`} 
+                      />
+                      <h2>{exercise.name}</h2>
+                    </div>
+                  ))}
                 </div>
-              ))}
-
               </div>
-            </div>
+            ) : (
+              <p>Loading...</p>
+            )}
           </div>
         </div>
       </div>
@@ -95,10 +102,10 @@ const Page3 = ({ generatedText, onNext }) => {
       </div>
       {/* Button */}
       <div className="absolute bottom-[8vh] left-[8vw]">
-        <Button href="/page4" className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
+        <Button onClick={onNext} className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
           Let's Start!
         </Button>
-        <Button href="/page2" className="px-16 py-6 bg-pink-100 ml-12 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
+        <Button onClick={onPrev} className="px-16 py-6 bg-pink-100 ml-12 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
           Go Back
         </Button>
       </div>

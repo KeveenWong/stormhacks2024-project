@@ -35,7 +35,7 @@ const Page = ({ onNext }) => {
               Welcome to your AI Yoga Companion!
             </p>
             <p className="text-4xl font-bold text-gray-800 mb-10 text-center">
-              I'm here to guide you to your journey of self improvement.
+              I'm here to guide you through your journey of self improvement.
             </p>
             <p className="text-4xl font-bold text-gray-800 text-center">
               Are you ready to begin?

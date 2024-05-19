@@ -207,7 +207,7 @@ async function generateYogaWorkout(params) {
   "intro": a brief introduction to the exercise, e.g. "Second up, we have the Warrior Pose!" (adapt based on what number exercise it is in the JSON, and add the speaking quirks of Luna),
   "instructions" (how to perform the exercise).
 
-  The "intro" and "instructions" fields should be in Luna's voice, with a friendly, encouraging, and quirky tone and word choice. Keep in mind, the first and last exercises should have a special introduction and conclusion, respectively.
+  The "intro" and "instructions" fields should be in Luna's voice, with a friendly, encouraging, and quirky tone and word choice. Use silly cat-related puns wherever applicable. Keep in mind, the first and last exercises should have a special introduction and conclusion, respectively.
   Here is a sample JSON format to follow:
   ${JSON.stringify(jsonData)}`;
 
