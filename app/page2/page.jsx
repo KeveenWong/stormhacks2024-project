@@ -4,25 +4,15 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Input } from '@nextui-org/react';
 import Button from '@components/Button'; // Adjust the import path as needed
+import { generateYogaWorkout } from '@utils/yoga-app'; // Adjust the import path as needed
 
-const Page2 = () => {
-  const [formData, setFormData] = useState({
-    length: '',
-    intensity: '',
-    timeOfDay: '',
-    yogaStyle: '',
-    injuries: '',
-    goals: '',
-    keywords: '',
-    numberOfExercises: '1' // Initialize with a default value of 1
-  });
-
+const Page2 = ({ formData, setFormData, onSubmit }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
     // If the input is for numberOfExercises, validate to keep the value between 1 and 10
     if (name === 'numberOfExercises') {
-      const numValue = Math.max(1, Math.min(10, Number(value)));
+      const numValue = Math.max(0, Math.min(10, Number(value)));
       setFormData({
         ...formData,
         [name]: numValue.toString()
@@ -36,9 +26,7 @@ const Page2 = () => {
   };
 
   const handleSubmit = () => {
-    // Save form data to localStorage
-    localStorage.setItem('formData', JSON.stringify(formData));
-    console.log('Form Data saved to localStorage:', formData);
+    onSubmit(formData);
   };
 
   return (
@@ -76,17 +64,6 @@ const Page2 = () => {
             </div>
             <div className="w-full h-[70%] overflow-auto p-4">
               <form className="space-y-6 text-lg text-gray-800">
-                <div>
-                  <label className="font-bold block mb-2">Length of session</label>
-                  <Input
-                    clearable
-                    fullWidth
-                    placeholder="Enter length"
-                    name="length"
-                    value={formData.length}
-                    onChange={handleInputChange}
-                  />
-                </div>
                 <div>
                   <label className="font-bold block mb-2">Number of Exercises</label>
                   <Input
@@ -183,8 +160,8 @@ const Page2 = () => {
       </div>
       {/* Button */}
       <div className="absolute bottom-[8vh] left-[20vw]">
-        <Button href="/page3" onClick={handleSubmit}>
-          Generate My Workout
+        <Button onClick={handleSubmit}>
+          Generate My Workout 
         </Button>
       </div>
     </div>

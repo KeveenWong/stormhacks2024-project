@@ -4,21 +4,29 @@ import dotenv from "dotenv";
 // Load environment variables from .env file
 dotenv.config();
 
-async function main() {
+async function promptGPT(prompt) {
+  // Instantiate OpenAI instance
   const openai = new OpenAI({ apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY, dangerouslyAllowBrowser: true });
-  const completion = await openai.chat.completions.create({
-    messages: [{ role: "system", content: "give me a 7 minute yoga exercise, with each minute being a new exercise. list each exercise the name of the exercise. format it in a way that is easily parsible." }],
-    model: "gpt-3.5-turbo-0125",
-  });
 
-  if (!completion) {
-    console.error("Error: completion is undefined");
+  try {
+    // Generate completion
+    const completion = await openai.chat.completions.create({
+      messages: [{ role: "system", content: prompt }],
+      model: "gpt-3.5-turbo-0125",
+    });
+
+    // Handle completion
+    if (!completion) {
+      console.error("Error: completion is undefined");
+      return "";
+    }
+
+    // Return generated content
+    return completion.choices[0].message.content;
+  } catch (error) {
+    console.error("Error generating completion:", error);
     return "";
   }
-
-  console.log(completion);
-  console.log(completion.choices[0].message);
-  return completion.choices[0].message.content;
 }
 
-export default main;
+export { promptGPT };

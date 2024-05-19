@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Button from '../../components/Button';
 import Link from 'next/link'
 
-const Page = () => {
+const Page = ({ onReset, onBye }) => {
   return (
     <div className="relative w-full h-screen">
       {/* Background Image */}
@@ -49,10 +49,10 @@ const Page = () => {
       </div>
       {/* Button */}
       <div className="absolute bottom-[8vh] left-[5vw]">
-        <Button href="/page1" className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
+        <Button onClick={onReset} className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
           Let's Go Again!
         </Button>
-        <Button href="/page1" className="px- py-6 bg-pink-100 ml-12 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
+        <Button onClick={onBye} href="/page1" className="px- py-6 bg-pink-100 ml-12 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
           Bye!
         </Button>
       </div>

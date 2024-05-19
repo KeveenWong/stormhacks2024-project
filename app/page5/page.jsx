@@ -1,13 +1,27 @@
-"use client"; // This directive makes the component a Client Component
+'use client'; // This directive makes the component a Client Component
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Button from '../../components/Button';
-import Link from 'next/link';
 
-const Page = () => {
-  const [time, setTime] = useState(60); // Set initial time to 60 seconds
+const TIMER_DURATION = 10; // Set the timer duration in seconds (10 seconds for testing)
+
+const encouragementAudios = [
+  '/assets/static_audio/encouragement1.mp3',
+  '/assets/static_audio/encouragement2.mp3',
+  '/assets/static_audio/encouragement3.mp3'
+];
+
+const Page5 = ({ exercise, onComplete }) => {
+  const [time, setTime] = useState(TIMER_DURATION); // Set initial time to exercise duration
   const [isActive, setIsActive] = useState(true);
+  const [hasPlayedHalfwayAudio, setHasPlayedHalfwayAudio] = useState(false);
+
+  useEffect(() => {
+    setTime(TIMER_DURATION); // Reset timer whenever a new exercise is received
+    setIsActive(true);
+    setHasPlayedHalfwayAudio(false);
+  }, [exercise]);
 
   useEffect(() => {
     let interval = null;
@@ -18,10 +32,20 @@ const Page = () => {
       }, 1000);
     } else if (time === 0) {
       clearInterval(interval);
+      onComplete(); // Move to next exercise when timer reaches 0
+    }
+
+    if (time === Math.floor(TIMER_DURATION / 2) && !hasPlayedHalfwayAudio) {
+      const randomAudio = encouragementAudios[Math.floor(Math.random() * encouragementAudios.length)];
+      const audio = new Audio(randomAudio);
+      audio.play().catch(error => {
+        console.error('Error playing encouragement audio:', error);
+      });
+      setHasPlayedHalfwayAudio(true);
     }
 
     return () => clearInterval(interval);
-  }, [isActive, time]);
+  }, [isActive, time, onComplete, hasPlayedHalfwayAudio]);
 
   const handleStop = () => {
     setIsActive(false);
@@ -61,12 +85,12 @@ const Page = () => {
           <div>
             <Image
               style={{ border: '2px solid #c0c0c0', borderRadius: '10%' }}
-              src="/assets/images/bird_of_paradise.png"
+              src={`/assets/images/yoga_images/${exercise.exercise}.png`}
               alt="Yoga Photo"
               width={400}
               height={400}
             />
-            <p className="text-center text-3xl font-bold pt-5">Bird of Paradise 15 mins</p>
+            <p className="text-center text-3xl font-bold pt-5">{exercise.name} 1 Mins</p>
           </div>
         </div>
         <div className="flex flex-col justify-center pl-2">
@@ -77,14 +101,12 @@ const Page = () => {
           </div>
           <div>
             <Button
-              href="#"
               onClick={handleStop}
               className="px-16 py-8 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95"
             >
               Stop
             </Button>
             <Button
-              href="#"
               onClick={handleResume}
               className="px-16 py-8 ml-12 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95"
             >
@@ -110,4 +132,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Page5;
