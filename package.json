@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/lilita-one": "^5.0.20",
     "@nextui-org/react": "^2.3.6",
     "axios": "^1.6.8",
     "dotenv": "^16.4.5",
