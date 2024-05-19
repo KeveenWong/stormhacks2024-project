@@ -50,4 +50,4 @@ Not everyone is always eager to commit to something new and Luna can help encour
 
 ## Our Amazing Team
 
-![Photo](/assets/images/team-photo.jpg)
+![Photo](public/assets/images/team-photo.jpg)
