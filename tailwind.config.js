@@ -8,11 +8,20 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        pink: {
+          100: '#fde2e4',
+          200: '#fbc4c7',
+          300: '#f8a6aa',
+          400: '#f5878d',
+          500: '#f26970',
+        },
       },
+    },
+  },
+  variants: {
+    extend: {
+      scale: ['active', 'hover'], // Ensure scale works for active and hover states
     },
   },
   plugins: [],
