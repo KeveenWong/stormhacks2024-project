@@ -49,15 +49,19 @@ const Page = () => {
         <Image
           src="/assets/images/MainPageCat.png"
           alt="Main Page Cat"
-          width={400}  // adjust width as needed
-          height={400} // adjust height as needed
+          width={500}  // adjust width as needed
+          height={500} // adjust height as needed
         />
       </div>
       {/* Button */}
       <div className="absolute bottom-[8vh] left-[26vw]">
-        <Button href="/page2" className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
-          I'm Ready!
-        </Button>
+      <Button
+        href="/page2"
+        className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95 hover:bg-pink-300"
+      >
+  I'm Ready!
+</Button>
+
       </div>
     </div>
   );

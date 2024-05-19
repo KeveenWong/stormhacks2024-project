@@ -89,16 +89,16 @@ const Page3 = () => {
         <Image
           src="/assets/images/Page3Cat.png"
           alt="Page2Cat"
-          width={400}
-          height={400}
+          width={500}
+          height={500}
         />
       </div>
       {/* Button */}
       <div className="absolute bottom-[8vh] left-[8vw]">
-        <Button href="/page4" className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
+        <Button href="/page4" className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95 hover:bg-pink-300">
           Let's Start!
         </Button>
-        <Button href="/page2" className="px-16 py-6 bg-pink-100 ml-12 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
+        <Button href="/page2" className="px-16 py-6 bg-pink-100 ml-12 text-gray-800 text-3xl font-bold rounded-xl shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95 hover:bg-pink-300">
           Go Back
         </Button>
       </div>

@@ -61,7 +61,7 @@ const Page2 = () => {
         />
       </div>
       {/* Speech Box */}
-      <div className="absolute top-[30%] left-8 transform -translate-y-[30%] w-[900px] h-[600px] p-4 overflow-hidden">
+      <div className="absolute top-[30%] left-8 transform -translate-y-[28%] w-[900px] h-[600px] p-4 overflow-hidden">
         <div className="relative w-full h-full">
           <Image
             src="/assets/images/speechbox.svg"
@@ -72,10 +72,10 @@ const Page2 = () => {
           <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-start items-center p-8 overflow-hidden">
             <div className="relative text-5xl font-bold text-gray-800 text-center mt-7 mb-8">
               Let's Personalize Your Workout!
-              <div className="absolute bottom-[-6px] left-1/2 transform -translate-x-1/2 w-[110%] h-1 bg-pink-300"></div>
+              <div className="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 w-[110%] h-1 bg-pink-300"></div>
             </div>
             <div className="w-full h-[70%] overflow-auto p-4">
-              <form className="space-y-6 text-lg text-gray-800">
+              <form className="space-y-6 text-xl text-gray-800">
                 <div>
                   <label className="font-bold block mb-2">Length of session</label>
                   <Input
@@ -177,13 +177,13 @@ const Page2 = () => {
         <Image
           src="/assets/images/Page2Cat.png"
           alt="Page2Cat"
-          width={400}
-          height={400}
+          width={500}
+          height={500}
         />
       </div>
       {/* Button */}
       <div className="absolute bottom-[8vh] left-[20vw]">
-        <Button href="/page3" onClick={handleSubmit}>
+        <Button className="text-gray-800 text-3xl font-bold rounded-xl shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95 hover:bg-pink-300" href="/page3" onClick={handleSubmit}>
           Generate My Workout
         </Button>
       </div>

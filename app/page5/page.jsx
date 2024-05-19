@@ -79,14 +79,14 @@ const Page = () => {
             <Button
               href="#"
               onClick={handleStop}
-              className="px-16 py-8 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95"
+              className="px-16 py-8 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95 hover:bg-pink-300"
             >
               Stop
             </Button>
             <Button
               href="#"
               onClick={handleResume}
-              className="px-16 py-8 ml-12 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95"
+              className="px-16 py-8 ml-12 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95 hover:bg-pink-300"
             >
               Resume
             </Button>

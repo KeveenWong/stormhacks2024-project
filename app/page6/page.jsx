@@ -43,16 +43,16 @@ const Page = () => {
         <Image
           src="/assets/images/Page6Cat.png"
           alt="Page 6 Cat"
-          width={700}
-          height={700}
+          width={900}
+          height={900}
         />
       </div>
       {/* Button */}
       <div className="absolute bottom-[8vh] left-[5vw]">
-        <Button href="/page1" className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
+        <Button href="/page2" className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95 hover:bg-pink-300">
           Let's Go Again!
         </Button>
-        <Button href="/page1" className="px- py-6 bg-pink-100 ml-12 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
+        <Button href="/page2" className="px-28 py-6 bg-pink-100 ml-12 text-gray-800 text-3xl font-bold rounded-xl shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95 hover:bg-pink-300">
           Bye!
         </Button>
       </div>
