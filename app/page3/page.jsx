@@ -12,10 +12,24 @@ const Page3 = () => {
   const photos = [
     { id: 1, url: imgageone, caption: 'Bird of Paradise' },
     { id: 2, url: imagetwo, caption: 'Front Splits' },
-    { id: 3, url: imagethree, caption: 'Peacock' }
+    { id: 3, url: imagethree, caption: 'Peacock' },
+    { id: 4, url: imgageone, caption: 'Bird of Paradise' },
+    { id: 5, url: imagetwo, caption: 'Front Splits' },
+    { id: 6, url: imagethree, caption: 'Peacock' },
+    { id: 7, url: imgageone, caption: 'Bird of Paradise' },
+    { id: 8, url: imagetwo, caption: 'Front Splits' },
+    { id: 9, url: imagethree, caption: 'Peacock' }
+    
+
   ];
 
   const positions = [
+    { name: 'Bird of Paradise', duration: 5 },
+    { name: 'Front Splits', duration: 10 },
+    { name: 'Peacock', duration: 7 },
+    { name: 'Bird of Paradise', duration: 5 },
+    { name: 'Front Splits', duration: 10 },
+    { name: 'Peacock', duration: 7 },
     { name: 'Bird of Paradise', duration: 5 },
     { name: 'Front Splits', duration: 10 },
     { name: 'Peacock', duration: 7 }
