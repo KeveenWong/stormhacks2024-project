@@ -4,16 +4,13 @@ import { promptGPT } from './openai-test';
 async function generateYogaWorkout(params) {
   // Destructure parameters
   const {
-    lengthOfSession,
-    numberOfExercises,
-    numberOfSetsPerExercise,
-    mood,
+    numberOfExercises, 
     intensity,
     timeOfDay,
-    preferredYogaStyle,
-    healthConditionsOrInjuries,
+    yogaStyle,
+    injuries,
     goals,
-    otherKeywords
+    keywords
   } = params;
 
     // Read the sample JSON file
@@ -26,13 +23,12 @@ async function generateYogaWorkout(params) {
   Please generate me a yoga workout with the following criteria in mind:
 
   Number of exercises: ${numberOfExercises}
-  Mood: ${mood}
   Intensity: ${intensity}
   Time of day: ${timeOfDay}
-  Preferred yoga style: ${preferredYogaStyle}
-  Health conditions or injuries: ${healthConditionsOrInjuries}
+  Preferred yoga style: ${yogaStyle}
+  Health conditions or injuries: ${injuries}
   Goals: ${goals}
-  Other keywords: ${otherKeywords}
+  Other keywords: ${keywords}
 
   ONLY USE THE FOLLOWING EXERCISES IN THE WORKOUT:
   "archer

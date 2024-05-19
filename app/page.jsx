@@ -1,124 +1,65 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
-import SpeechCard from '../components/SpeechCard';
-import { generateYogaWorkout } from '@utils/yoga-app';
-import { processExerciseSpeech } from '@utils/elevenlabs';
-import axios from 'axios';
-import { playAudio } from '@utils/general';
+import Image from 'next/image';
+import Button from '@components/Button'; // Adjust the import path as needed
 
-export default function Home() {
-  const timer_value = 10;
-  const [generatedText, setGeneratedText] = useState(); // State to store generated text
-  const [currentExercise, setCurrentExercise] = useState(0); // State to keep track of the current exercise
-  const [sessionStarted, setSessionStarted] = useState(false); // State to keep track of whether the session has started
-  const [timer, setTimer] = useState(timer_value); // State to keep track of the timer (in seconds)
-  const [isTimerRunning, setIsTimerRunning] = useState(false); // State to control timer running status
-
-  // Example usage:
-  const params = {
-    numberOfExercises: 8,
-    numberOfSetsPerExercise: 3,
-    mood: "Chill",
-    intensity: "Difficult",
-    timeOfDay: "Morning",
-    preferredYogaStyle: "Hatha",
-    healthConditionsOrInjuries: "Hamstring injury",
-    goals: "Stress-relief",
-    otherKeywords: "None"
-  };
-
-  const handleStartSession = async () => {
-    // Call generateYogaWorkout and set the generated text in state
-    const text = await generateYogaWorkout(params);
-    const parsedText = JSON.parse(text); // Parse the JSON string if necessary
-    setGeneratedText(parsedText);   
-    
-    // // Iterate through each exercise and call the function
-    // for (const exercise of parsedText.exercises) {
-    //   const exerciseName = exercise.exercise;
-    //   const exerciseIntro = exercise.intro;
-    //   const exerciseInstructions = exercise.instructions;
-    //   await axios.post('/api/generate-audio', {
-    //     exerciseName,
-    //     exerciseIntro,
-    //     exerciseInstructions
-    //   });
-    // }
-
-    // First exercise audio only
-    // const exerciseName = parsedText.exercises[0].exercise;
-    // const exerciseIntro = parsedText.exercises[0].intro;
-    // const exerciseInstructions = parsedText.exercises[0].instructions;
-    // await axios.post('/api/generate-audio', {
-    //   exerciseName,
-    //   exerciseIntro,
-    //   exerciseInstructions
-    // });
-  
-    setSessionStarted(true);
-    setIsTimerRunning(false); // Don't start the timer immediately after session starts
-  };
-
-  useEffect(() => {
-    setTimer(timer_value); // Reset the timer
-  }, [generatedText]);
-
-  // print the generated text
-  useEffect(() => {
-    console.log('generatedTextEffect:', generatedText);
-  }, [generatedText]);
-
-  useEffect(() => {
-    if (generatedText && generatedText.exercises && generatedText.exercises[currentExercise]) {
-        playAudio(`/assets/instructions_audio/${generatedText.exercises[currentExercise].exercise}`);
-    }
-}, [currentExercise, generatedText]);
-
-
-  useEffect(() => {
-    // Start the timer when the session starts and isTimerRunning is true
-    if (sessionStarted && isTimerRunning && timer > 0) {
-      const interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1);
-      }, 1000); // Update the timer every second
-      return () => clearInterval(interval); // Clean up the interval
-    } else if (timer === 0 && currentExercise < params.numberOfExercises - 1) {
-      setCurrentExercise((prevExercise) => prevExercise + 1); // Move to the next exercise
-      setTimer(timer_value); // Reset the timer for the next exercise
-      setIsTimerRunning(false); // Stop the timer and wait for user to start it again
-    }
-  }, [sessionStarted, isTimerRunning, timer, currentExercise, params.numberOfExercises]);
-
-  const handleStartNextExercise = () => {
-    setIsTimerRunning(true); // Start the timer for the next exercise
-  };
-
+const Page = () => {
   return (
-    <div>
-      <Head>
-        <title>Yoga Session</title>
-      </Head>
-      <main>
-        <h1>Yoga Session</h1>
-        <button onClick={handleStartSession}>Start Yoga Session</button>
-        {((generatedText != undefined) && sessionStarted) ? 
-          <div>
-            <h2>Exercise {currentExercise + 1}: {generatedText.exercises[currentExercise].exercise}</h2>
-            <SpeechCard text={generatedText.exercises[currentExercise].instructions} />
-            <p>Time Remaining: {timer} seconds</p>
-            {currentExercise < params.numberOfExercises - 1 && !isTimerRunning && (
-              <button onClick={handleStartNextExercise}>Start Next Exercise</button>
-            )}
-          </div> : <h1>Loading...</h1>
-        }
-        {timer === 0 && currentExercise === params.numberOfExercises - 1 && (
-          <div>
-            <h2>Congratulations!</h2>
-            <p>You have completed the yoga session.</p>
+    <div className="relative w-full h-screen">
+      {/* Background Image */}
+      <Image
+        src="/assets/images/Background.svg"
+        alt="Background"
+        layout="fill"
+        objectFit="cover"
+        quality={100}
+      />
+      {/* Logo */}
+      <div className="absolute top-0 left-0 m-4">
+        <Image
+          src="/assets/images/Logo.svg"
+          alt="Logo"
+          width={200}  // adjusted width
+          height={200} // adjusted height
+        />
+      </div>
+      {/* Speech Box */}
+      <div className="absolute top-[40%] left-8 transform -translate-y-[40%] w-[900px] h-[500px] p-4">
+        <div className="relative w-full h-full">
+          <Image
+            src="/assets/images/speechbox.svg"
+            alt="Speech Box"
+            layout="fill"
+            objectFit="contain"
+          />
+          <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center p-8">
+            <p className="text-4xl font-bold text-gray-800 mb-10 text-center">
+              Welcome to your AI Yoga Companion!
+            </p>
+            <p className="text-4xl font-bold text-gray-800 mb-10 text-center">
+              I'm here to guide you to your journey of self improvement.
+            </p>
+            <p className="text-4xl font-bold text-gray-800 text-center">
+              Are you ready to begin?
+            </p>
           </div>
-        )}
-      </main>
+        </div>
+      </div>
+      {/* Main Page Cat */}
+      <div className="absolute bottom-0 right-0 mb-8 mr-8">
+        <Image
+          src="/assets/images/MainPageCat.png"
+          alt="Main Page Cat"
+          width={400}  // adjust width as needed
+          height={400} // adjust height as needed
+        />
+      </div>
+      {/* Button */}
+      <div className="absolute bottom-[8vh] left-[26vw]">
+        <Button href="/page2" className="px-12 py-6 bg-pink-100 text-gray-800 text-3xl font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-opacity-50 transform transition-transform duration-200 hover:scale-105 active:scale-95">
+          I'm Ready!
+        </Button>
+      </div>
     </div>
   );
-}
+};
+
+export default Page;
